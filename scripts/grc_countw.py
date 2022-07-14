@@ -7,9 +7,8 @@ from collections import Counter
 def count_words(ftext):
     """" use Counter to count word freq based on whitespace:
     arg: str (full text) --- return: Counter """
-    #full_text = re.split("\s+", ftext)
-    full_text: list = ftext.lower().rstrip().split()  #strip whitespace, convert to lowercase, returns as list
-    #full_text = full_text.split("?!',") #strip whitespace
+    full_text = re.findall("\w+", ftext.lower().strip())
+    ##full_text: list = ftext.lower().rstrip().split()  #strip whitespace, convert to lowercase, returns as list
     print(full_text)  #debug
     word_count_counter = Counter(full_text)
     return word_count_counter
@@ -28,8 +27,7 @@ def read_write(in_fname, out_fname):
             for word, count in counted_words.items():
                 out_fh.write(f"{word},{count}\n")
     else:
-        pass
-        #invalid file
+        print("invalid file")
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
